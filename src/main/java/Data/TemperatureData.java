@@ -31,7 +31,7 @@ public class TemperatureData {
     /**
      * @param temperature the temperature to set
      */
-    public void setTemperature(String temperature) {
+    public void setTemperature(String temperature)  {
         
         System.out.println("Temperature is " + temperature);
         float temp, oldTemp;
