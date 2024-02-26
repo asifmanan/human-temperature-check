@@ -34,11 +34,13 @@ public class TemperatureUI extends javax.swing.JFrame implements PropertyChangeL
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        btnGroupTempUnit = new javax.swing.ButtonGroup();
         txtTemperature = new javax.swing.JTextField();
         lblTemperature = new javax.swing.JLabel();
         btnCheck = new javax.swing.JButton();
         txtFeedback = new javax.swing.JTextField();
+        rBtnCelsius = new javax.swing.JRadioButton();
+        rBtnFahrenheit = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,37 +53,60 @@ public class TemperatureUI extends javax.swing.JFrame implements PropertyChangeL
             }
         });
 
+        btnGroupTempUnit.add(rBtnCelsius);
+        rBtnCelsius.setSelected(true);
+        rBtnCelsius.setText("Celsius");
+        rBtnCelsius.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rBtnCelsiusActionPerformed(evt);
+            }
+        });
+
+        btnGroupTempUnit.add(rBtnFahrenheit);
+        rBtnFahrenheit.setText("Fahrenheit");
+        rBtnFahrenheit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rBtnFahrenheitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtFeedback))
-                .addGap(20, 20, 20))
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(lblTemperature)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFeedback)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rBtnCelsius)
+                            .addComponent(rBtnFahrenheit))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTemperature, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(txtTemperature))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
+                .addComponent(rBtnCelsius)
+                .addGap(18, 18, 18)
+                .addComponent(rBtnFahrenheit)
+                .addGap(30, 30, 30)
+                .addComponent(lblTemperature)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTemperature))
-                .addGap(61, 61, 61)
-                .addComponent(btnCheck)
-                .addGap(18, 18, 18)
+                    .addComponent(btnCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(txtFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -91,8 +116,21 @@ public class TemperatureUI extends javax.swing.JFrame implements PropertyChangeL
         // TODO add your handling code here:
 
         td.setTemperature(txtTemperature.getText());
+//        td.setTemperature(txtTemperature.getText(), rBtnCelsius.isSelected());
         
     }//GEN-LAST:event_btnCheckActionPerformed
+
+    private void rBtnCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBtnCelsiusActionPerformed
+        // TODO add your handling code here:
+        td.setCelciusScale();
+        
+    }//GEN-LAST:event_rBtnCelsiusActionPerformed
+
+    private void rBtnFahrenheitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBtnFahrenheitActionPerformed
+        // TODO add your handling code here:
+        td.setFahrenheitScale();
+        
+    }//GEN-LAST:event_rBtnFahrenheitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,8 +169,10 @@ public class TemperatureUI extends javax.swing.JFrame implements PropertyChangeL
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheck;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup btnGroupTempUnit;
     private javax.swing.JLabel lblTemperature;
+    private javax.swing.JRadioButton rBtnCelsius;
+    private javax.swing.JRadioButton rBtnFahrenheit;
     private javax.swing.JTextField txtFeedback;
     private javax.swing.JTextField txtTemperature;
     // End of variables declaration//GEN-END:variables
